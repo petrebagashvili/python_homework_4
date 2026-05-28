@@ -115,3 +115,92 @@ while loop:
 
     else:
         print("შეცდომა! გთხოვთ შეიყვანოთ მხოლოდ მთელი დადებითი რიცხვი.")
+
+#  სავარჯიშო 4
+
+def is_palindrome(s):
+    return s == s[::-1]
+
+def closest_palindrome(s):
+    for i in range(len(s)):
+        candidate = s[:i] + s[i+1:]
+        if is_palindrome(candidate):
+            return candidate
+
+    for i in range(len(s)):
+        candidate = s[:i] + s[i] + s[i:]
+        if is_palindrome(candidate):
+            return candidate
+
+    return s[::-1]
+
+
+text = input("Enter text: ")
+
+if not text.isalnum():
+    print("Only letters and numbers allowed!")
+else:
+    if is_palindrome(text):
+        print("It is a palindrome")
+    else:
+        print("Not a palindrome")
+        print("Closest palindrome suggestion:", closest_palindrome(text))
+
+# სავარჯიშო 5
+
+import random
+
+word = input("Enter one word only: ")
+
+if len(word.split()) != 1 or not word.isalpha():
+    print("Invalid input! Only one word allowed.")
+else:
+    nicknames = [
+        word + "Master",
+        word + "Pro",
+        "Emperor_" + word,
+        word + "X",
+        word + "_King"
+    ]
+
+    print("Nicknames:")
+    for n in random.sample(nicknames, 5):
+        print(n)
+
+# სავარჯიშო 6
+
+import random
+
+numbers = input("Enter numbers separated by space: ")
+
+nums = numbers.split()
+
+if not all(n.lstrip("-").isdigit() for n in nums):
+    print("Only numbers allowed!")
+else:
+    nums = [int(n) for n in nums]
+
+    print("Choose sorting type:")
+    print("1 - ზრდადობით")
+    print("2 - კლებადობით")
+    print("3 - რანდომულად")
+    print("4 - მხოლოდ უნიკალური მონაცემები დატოვოს")
+
+    choice = input("Enter choice: ")
+
+    if choice == "1":
+        print(sorted(nums))
+
+    elif choice == "2":
+        print(sorted(nums, reverse=True))
+
+    elif choice == "3":
+        random.shuffle(nums)
+        print(nums)
+
+    elif choice == "4":
+        unique_nums = list(dict.fromkeys(nums))
+        print(unique_nums)
+
+    else:
+        print("Invalid choice")
