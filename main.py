@@ -204,3 +204,68 @@ else:
 
     else:
         print("Invalid choice")
+
+# სავარჯიშო 7
+
+def filter_text(text):
+    result = ""
+
+    for char in text:
+        if char.isalpha() or char == " ":
+            result += char
+
+    return result
+
+
+text = input("Enter text: ")
+print("Filtered text:", filter_text(text))
+
+# სავარჯიშო 8
+
+nums = input("Enter numbers separated by space: ").split()
+
+if not all(n.lstrip("-").isdigit() for n in nums):
+    print("Only numbers allowed!")
+else:
+    row = [int(n) for n in nums]
+
+    print("Pyramid:")
+    print(*row)
+
+    while len(row) > 1:
+        new_row = []
+
+        for i in range(len(row) - 1):
+            new_row.append(row[i] + row[i + 1])
+
+        print(*new_row)
+        row = new_row
+
+# სავარჯიშო 9
+
+text = input("Enter text: ").lower()
+
+words = text.split()
+
+freq = {}
+
+for w in words:
+    freq[w] = freq.get(w, 0) + 1
+
+max_count = max(freq.values())
+most_common = [word for word, count in freq.items() if count == max_count]
+
+print("Most frequent word(s):", most_common)
+
+# სავარჯიშო 10
+
+sentence = input("Enter sentence: ")
+
+words = sentence.split()
+
+result = {}
+
+for word in words:
+    result[word] = len(word)
+
+print(result)
