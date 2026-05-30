@@ -8,7 +8,7 @@ def password_generator():
         length_input = input("Enter password length: ")
         if not length_input.isdigit():
             print("Enter numbers only!")
-            continue  # თავიდან აწყებინებს ციკლს
+            continue
 
         length = int(length_input)
 
@@ -39,7 +39,7 @@ def password_generator():
         stop = input("Do you want another password? (yes/no): ").lower()
         if stop == "no":
             print("Thank you!, goodbye!")
-            return password  # აბრუნებს პაროლს და ასრულებს ფუნქციას
+            return password
         elif stop == "yes":
             print("Thank you for using this program again")
         else:
